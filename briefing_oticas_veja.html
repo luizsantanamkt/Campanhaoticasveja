@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Campanha — Óticas Veja</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --off-white: #f5f2ee;
+    --pink: #E8004D;
+    --white: #ffffff;
+    --gray: #1a1a1a;
+    --light-gray: #2e2e2e;
+    --text-muted: #888;
+    --green: #009c3b;
+    --yellow: #FFDF00;
+    --blue: #002776;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--black);
+    color: var(--off-white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--gray);
+    padding: 40px 48px 36px;
+    border-bottom: 3px solid var(--pink);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .logo-area {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .agency-tag {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 600;
+  }
+
+  .logo-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 2px;
+  }
+
+  .logo-name span { color: var(--pink); }
+
+  .header-right {
+    text-align: right;
+  }
+
+  .client-label {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .client-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: var(--off-white);
+    letter-spacing: 1px;
+  }
+
+  .date-badge {
+    display: inline-block;
+    margin-top: 6px;
+    background: var(--pink);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  /* MAIN LAYOUT */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 52px 40px 80px;
+  }
+
+  /* SECTION */
+  section {
+    margin-bottom: 52px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .section-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    color: var(--pink);
+    letter-spacing: 3px;
+    min-width: 28px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .divider {
+    flex: 1;
+    height: 1px;
+    background: var(--light-gray);
+  }
+
+  /* INTRO BLOCK */
+  .intro-block {
+    background: var(--gray);
+    border-left: 4px solid var(--pink);
+    padding: 24px 28px;
+    border-radius: 0 6px 6px 0;
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.75;
+  }
+
+  .intro-block strong { color: var(--white); font-weight: 600; }
+
+  /* CONCEPT CARD */
+  .concept-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 28px 32px;
+    border-top: 3px solid var(--pink);
+  }
+
+  .concept-card p {
+    color: #ccc;
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  .concept-card p + p { margin-top: 14px; }
+
+  .concept-card strong { color: var(--white); }
+
+  /* SCENARIOS GRID */
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .scenario-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 22px 20px;
+    border-top: 4px solid transparent;
+    transition: transform .2s ease;
+  }
+
+  .scenario-card:nth-child(1) { border-top-color: #E8004D; }
+  .scenario-card:nth-child(2) { border-top-color: var(--green); }
+  .scenario-card:nth-child(3) { border-top-color: var(--yellow); }
+
+  .scenario-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    margin-bottom: 8px;
+    opacity: .18;
+  }
+
+  .scenario-card:nth-child(1) .scenario-num { color: #E8004D; }
+  .scenario-card:nth-child(2) .scenario-num { color: var(--green); }
+  .scenario-card:nth-child(3) .scenario-num { color: var(--yellow); }
+
+  .scenario-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .scenario-desc {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.65;
+  }
+
+  .tag-row {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    text-transform: uppercase;
+  }
+
+  .tag-red   { background: rgba(232,0,77,.15); color: #E8004D; border: 1px solid rgba(232,0,77,.3); }
+  .tag-green { background: rgba(0,156,59,.15); color: #2dd172; border: 1px solid rgba(0,156,59,.3); }
+  .tag-yellow{ background: rgba(255,223,0,.12); color: #FFD700; border: 1px solid rgba(255,223,0,.25); }
+
+  /* CAST */
+  .cast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .cast-card {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .cast-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .cast-icon.couple { background: rgba(232,0,77,.15); }
+  .cast-icon.friends { background: rgba(0,156,59,.12); }
+
+  .cast-role {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+
+  .cast-names {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .cast-detail {
+    font-size: 12px;
+    color: #999;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+
+  /* LOCATIONS */
+  .locations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .location-item {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .loc-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .loc-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    color: var(--white);
+    letter-spacing: 1.5px;
+  }
+
+  .loc-desc {
+    font-size: 12px;
+    color: #888;
+    margin-top: 2px;
+  }
+
+  /* DELIVERABLES */
+  .deliverables-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .deliverable-item {
+    background: var(--gray);
+    border-radius: 8px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .deliv-icon {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .deliv-title {
+    font-weight: 600;
+    color: var(--white);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .deliv-desc {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  /* RESULTS */
+  .results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .result-item {
+    background: var(--gray);
+    border-radius: 6px;
+    padding: 14px 20px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .result-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pink);
+    flex-shrink: 0;
+  }
+
+  .result-text {
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  .result-text strong { color: var(--white); }
+
+  /* CHECKLIST */
+  .checklist-intro {
+    background: rgba(232,0,77,.08);
+    border: 1px solid rgba(232,0,77,.2);
+    border-radius: 8px;
+    padding: 16px 20px;
+    font-size: 13px;
+    color: #ccc;
+    margin-bottom: 22px;
+    line-height: 1.6;
+  }
+
+  .checklist-intro strong { color: var(--pink); }
+
+  .checklist-group {
+    margin-bottom: 24px;
+  }
+
+  .checklist-group-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
+
+  .checklist-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .checklist-item {
+    background: var(--gray);
+    border-radius: 6px;
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .check-box {
+    width: 18px;
+    height: 18px;
+    border: 2px solid var(--light-gray);
+    border-radius: 4px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .check-label {
+    font-size: 13.5px;
+    color: #ccc;
+    line-height: 1.45;
+  }
+
+  .check-label strong { color: var(--white); font-weight: 600; }
+
+  .check-label .note {
+    display: block;
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray);
+    border-top: 1px solid var(--light-gray);
+    padding: 28px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
+
+  .footer-brand span { color: var(--pink); }
+
+  .footer-note {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    header { padding: 28px 24px; }
+    main { padding: 36px 20px 60px; }
+    .scenarios-grid { grid-template-columns: 1fr; }
+    .cast-grid { grid-template-columns: 1fr; }
+    .deliverables-grid { grid-template-columns: 1fr; }
+    .logo-name { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <span class="agency-tag">Apresentado por</span>
+    <div class="logo-name">Lu<span>gle</span></div>
+  </div>
+  <div class="header-right">
+    <div class="client-label">Cliente</div>
+    <div class="client-name">Óticas Veja</div>
+    <span class="date-badge">Campanha — Junho 2026</span>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">00</span>
+      <h2 class="section-title">Contexto da Campanha</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="intro-block">
+      Vamos unir dois momentos de alto impacto em uma única campanha visual:
+      o <strong>Dia dos Namorados</strong> e a <strong>Copa do Mundo</strong>.
+      A ideia é criar conteúdo editorial, atual e altamente compartilhável —
+      onde os óculos da Óticas Veja são a peça central dentro de um universo que mistura
+      <strong>moda, lifestyle e futebol</strong>. Estética fashion, brasilidade moderna
+      e muita força visual.
+    </div>
+  </section>
+
+  <!-- CONCEITO -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">O que Pensamos</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="concept-card">
+      <p>
+        Uma campanha que foge do clichê de torcida tradicional e traz a Copa de um jeito
+        <strong>mais estiloso, editorial e jovem</strong>. A paleta verde-amarela está lá —
+        mas tratada como escolha de moda, não de fanático.
+      </p>
+      <p>
+        Os óculos entram como o acessório que amarra o look e define o mood de cada
+        personagem da cena. Cada foto deve parecer saída de uma campanha de moda de verdade,
+        com o futebol como pano de fundo aspiracional.
+      </p>
+      <p>
+        Para o <strong>Dia dos Namorados</strong>, o casal traz uma energia mais intimista
+        e fashion. Para a <strong>Copa</strong>, amigas comemorando juntas — energia, alegria
+        e atitude. E quando os dois temas se encontram, o casal veste o Brasil com estilo.
+      </p>
+    </div>
+  </section>
+
+  <!-- CENÁRIOS -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Os 3 Cenários</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="scenarios-grid">
+
+      <div class="scenario-card">
+        <div class="scenario-num">01</div>
+        <div class="scenario-label">Só Dia dos Namorados</div>
+        <div class="scenario-desc">
+          Mara e Bruno com looks normais — fashion e urbanos. Editorial de casal,
+          foco nos óculos como detalhe que eleva o look.
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-red">Mara</span>
+          <span class="tag tag-red">Bruno</span>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-num">02</div>
+        <div class="scenario-label">Só Copa do Mundo</div>
+        <div class="scenario-desc">
+          Karen, Taís, Mara e Bruno vestindo o Brasil com atitude. Cenas de celebração,
+          street style com cores da seleção — amigas e ele individualmente.
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-green">Karen</span>
+          <span class="tag tag-green">Taís</span>
+          <span class="tag tag-green">Mara</span>
+          <span class="tag tag-green">Bruno</span>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-num">03</div>
+        <div class="scenario-label">Copa + Namorados</div>
+        <div class="scenario-desc">
+          Mara e Bruno juntos, agora de camisa do Brasil. Casal estiloso
+          que também é torcedor — amor e futebol no mesmo frame.
+        </div>
+        <div class="tag-row">
+          <span class="tag tag-yellow">Mara</span>
+          <span class="tag tag-yellow">Bruno</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ELENCO -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Elenco</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="cast-grid">
+
+      <div class="cast-card">
+        <div class="cast-icon couple">💑</div>
+        <div>
+          <div class="cast-role">Representam — Casal</div>
+          <div class="cast-names">Mara & Bruno</div>
+          <div class="cast-detail">
+            Fotos individuais e juntos.<br>
+            Cenário 01 (looks normais), Cenário 02 (camisas do Brasil, individualmente) e Cenário 03 (casal com Brasil).
+          </div>
+        </div>
+      </div>
+
+      <div class="cast-card">
+        <div class="cast-icon friends">🤝</div>
+        <div>
+          <div class="cast-role">Representam — Amigas Torcedoras</div>
+          <div class="cast-names">Karen & Taís</div>
+          <div class="cast-detail">
+            Fotos individuais e juntas.<br>
+            Cenário 02 — camisas do Brasil, energia Copa.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LOCAIS -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Locações</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="locations-list">
+      <div class="location-item">
+        <div class="loc-icon">🏟️</div>
+        <div>
+          <div class="loc-name">Estádio</div>
+          <div class="loc-desc">Cenário principal Copa — arquibancada, gramado, estrutura esportiva como backdrop editorial</div>
+        </div>
+      </div>
+      <div class="location-item">
+        <div class="loc-icon">🌊</div>
+        <div>
+          <div class="loc-name">Orla de Petrolina</div>
+          <div class="loc-desc">Luz natural aberta, clima de lifestyle — ótimo para conteúdo mais solto e espontâneo</div>
+        </div>
+      </div>
+      <div class="location-item">
+        <div class="loc-icon">🍺</div>
+        <div>
+          <div class="loc-name">Bar Bora-Bora</div>
+          <div class="loc-desc">Ambiente de boteco moderno — perfeito para energia Copa, amigas, celebração com estilo</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEÚDOS -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">O que Faremos</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="deliverables-grid">
+      <div class="deliverable-item">
+        <div class="deliv-icon">📸</div>
+        <div>
+          <div class="deliv-title">Fotos Editoriais</div>
+          <div class="deliv-desc">Imagens trabalhadas com intenção de campanha — composição, luz e pose pensados para feed e materiais da marca.</div>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliv-icon">🎬</div>
+        <div>
+          <div class="deliv-title">Reels com Transições de Look</div>
+          <div class="deliv-desc">Vídeos dinâmicos mostrando a troca de óculos ou a transformação do look — alto potencial de engajamento.</div>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliv-icon">🎥</div>
+        <div>
+          <div class="deliv-title">Bastidores</div>
+          <div class="deliv-desc">Conteúdo de making of para stories — gera autenticidade, aproxima a marca do público e alimenta o calendário de posts.</div>
+        </div>
+      </div>
+      <div class="deliverable-item">
+        <div class="deliv-icon">✨</div>
+        <div>
+          <div class="deliv-title">Conteúdo Espontâneo & Fashion</div>
+          <div class="deliv-desc">Fotos e vídeos mais soltos, com pegada de street style — para stories, repost e conteúdo orgânico.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTADOS ESPERADOS -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">O que Esperamos de Resultado</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="results-list">
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <div class="result-text"><strong>Posicionamento da marca</strong> como referência de estilo, não só de produto óptico</div>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <div class="result-text"><strong>Conteúdo altamente compartilhável</strong> — peças visuais fortes que naturalmente ganham alcance orgânico</div>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <div class="result-text"><strong>Conexão com datas de alto engajamento</strong> — Copa e Dia dos Namorados amplificam a relevância do conteúdo</div>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <div class="result-text"><strong>Banco de conteúdo robusto</strong> para alimentar o feed por semanas — fotos, reels, stories e bastidores</div>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <div class="result-text"><strong>Identificação do público jovem</strong> com a marca — estética Brasil Core + Street Style + Editorial de moda</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Checklist — O que Levar</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="checklist-intro">
+      <strong>Importante:</strong> este checklist é uma sugestão de referência criativa — não é obrigatório levar tudo.
+      Quanto mais itens, mais rica será a produção, mas entendemos que nem tudo pode estar disponível.
+      Use como guia e traga o que conseguir!
+    </div>
+
+    <!-- ROUPAS -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">👕 Roupas</div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Camisas do Brasil (femininas)</strong> — para Karen, Taís e Mara
+            <span class="note">Camisa oficial, cropped verde-amarelo, regata Brasil, camiseta estampada — variar modelos enriquece os looks</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Camisa do Brasil (masculina)</strong> — para Bruno
+            <span class="note">Camisa oficial da seleção ou camiseta verde/amarela — pode variar entre Cenários 02 e 03</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Looks "normais" fashion</strong> — para Mara e Bruno (Cenário 01 — Dia dos Namorados)
+            <span class="note">Roupas urbanas e estilosas sem temática Copa — calça, blusa, conjunto, jaqueta etc.</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Shorts jeans ou saia</strong> para combinar com as camisas do Brasil
+            <span class="note">Short médio ou micro, saia jeans ou cargo — composição clássica Brasil Core</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Calça cargo ou wide leg</strong> — para looks mais streetwear masculinos e femininos
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Conjunto verde ou amarelo</strong> (top + saia ou short) para look Copa mais editorial
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALÇADOS -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">👟 Calçados</div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Havaianas Brasil</strong> ou chinelo nas cores da seleção
+            <span class="note">Clássico absoluto — compõe o look de baixo para cima com brasilidade</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Tênis branco</strong> — versátil para todos os cenários
+            <span class="note">Air Force, chunky ou qualquer tênis clean que funcione com o look</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ACESSÓRIOS -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">💍 Acessórios</div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Brincos grandes / maxi brincos</strong>
+            <span class="note">Peças marcantes, douradas, coloridas ou de argola — quanto mais volumoso, melhor para foto</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Mix de colares sobrepostos</strong>
+            <span class="note">Correntes, pingentes, gargantilhas — layering de colares dá volume e personalidade ao look</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Pulseiras e braceletes variados</strong>
+            <span class="note">Correntes, elásticos, de couro — incluindo os de temática Brasil (verde, amarelo, azul)</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Cordão/corrente masculina</strong> — para Bruno
+            <span class="note">Corrente grossa dourada ou prateada — eleva qualquer look masculino</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Lenços</strong> — de pescoço, cabeça, pulso ou amarrado na bolsa
+            <span class="note">Verde, amarelo, estampado ou colorido — versáteis para compor qualquer look</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Bonés e chapéus</strong>
+            <span class="note">Cap snapback, boné do Brasil, chapéu de pescador (bucket hat) ou aba larga</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Bandana / headband</strong> — para usar na cabeça ou no pescoço
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROPS DE CENA -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">⚽ Props de Cena & Elementos Visuais</div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Bandeira do Brasil grande</strong>
+            <span class="note">Essencial — para cenas de movimento, como capa, ao fundo ou segurando aberta. Quanto maior, mais impacto visual</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Bola de futebol</strong>
+            <span class="note">Acessório de cena clássico — segurar, equilibrar, ao chão. Não precisa ser nova, só limpa</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Vuvuzela</strong>
+            <span class="note">Objeto icônico de Copa — ótimo para poses de celebração e fotos de ação</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Pandeiro</strong>
+            <span class="note">Traz brasilidade musical à cena — excelente para vídeos e fotos com movimento</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Corneta / buzina de torcida</strong>
+            <span class="note">Complementa a energia de estádio — boa para cenas de comemoração</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Faixa ou bandeirinha do Brasil</strong> (menor)
+            <span class="note">Para segurar na mão, agitar ou usar como acessório de cena — mais versátil que a bandeira grande</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BELEZA -->
+    <div class="checklist-group">
+      <div class="checklist-group-title">💄 Beleza & Make</div>
+      <div class="checklist-items">
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Make temática Copa</strong> — para looks dos Cenários 02 e 03
+            <span class="note">Delineado colorido (verde/amarelo), glitter, sombra vibrante ou gatinho exagerado — traz vida e personalidade às fotos</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Glitter ou iluminador dourado/verde</strong> no rosto ou colo
+            <span class="note">Pequeno detalhe que faz diferença enorme em foto e vídeo</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Make clean/editorial</strong> — para o Cenário 01 (Dia dos Namorados)
+            <span class="note">Olho marcante ou lábio forte, pele iluminada — look sofisticado sem referência Copa</span>
+          </div>
+        </div>
+        <div class="checklist-item">
+          <div class="check-box"></div>
+          <div class="check-label">
+            <strong>Esmalte nas cores do Brasil</strong> (verde, amarelo ou azul)
+            <span class="note">Detalhe sutil que aparece bem em closes de mãos segurando acessórios ou a bola</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-brand">Lu<span>gle</span></div>
+  <div class="footer-note">Campanha Óticas Veja · Dia dos Namorados + Copa 2026</div>
+</footer>
+
+</body>
+</html>
